@@ -674,7 +674,8 @@ body.dark-theme .header.bg-header {
 .qualification__tabs {
   display: flex;
   justify-content: center;
-  gap: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
   margin-bottom: 2.5rem;
 }
 
@@ -804,6 +805,155 @@ body.dark-theme .header.bg-header {
   height: 100%;
   background-color: var(--border-color);
   transform: translate(6px, -5px);
+}
+
+/* Keep timeline tabs centered and optimal */
+#education,
+#experience {
+  max-width: 680px;
+  margin-inline: auto;
+}
+
+/*=============== ACHIEVEMENTS ===============*/
+.achievements__container {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+}
+
+@media screen and (min-width: 640px) {
+  .achievements__container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.achievement__card {
+  background-color: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 1.25rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
+  display: flex;
+  flex-direction: column;
+}
+
+.achievement__card:hover {
+  transform: translateY(-5px);
+  border-color: var(--first-color);
+  box-shadow: var(--shadow-md);
+}
+
+.achievement__img-box {
+  position: relative;
+  width: 100%;
+  height: 150px;
+  background-color: var(--container-color);
+  overflow: hidden;
+}
+
+.achievement__img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 2;
+  transition: transform .4s ease;
+}
+
+.achievement__card:hover .achievement__img {
+  transform: scale(1.05);
+}
+
+.achievement__placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: .4rem;
+  background: hsla(var(--hue), 85%, 60%, 0.04);
+  border-bottom: 1px dashed var(--border-color);
+  color: var(--text-color-light);
+  transition: var(--transition);
+  padding: 1rem;
+  text-align: center;
+  user-select: none;
+}
+
+.achievement__card:hover .achievement__placeholder {
+  background: hsla(var(--hue), 85%, 60%, 0.08);
+  border-bottom-color: var(--first-color);
+}
+
+.achievement__placeholder-icon {
+  font-size: 2rem;
+  color: var(--first-color);
+  opacity: .8;
+  transition: transform .3s ease;
+}
+
+.achievement__card:hover .achievement__placeholder-icon {
+  transform: scale(1.1);
+}
+
+.achievement__placeholder-text {
+  font-size: var(--tiny-font-size);
+  font-weight: var(--font-medium);
+  color: var(--text-color-light);
+  letter-spacing: .4px;
+}
+
+.achievement__data {
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.achievement__badge {
+  display: inline-flex;
+  align-items: center;
+  column-gap: .35rem;
+  align-self: flex-start;
+  background-color: hsla(var(--hue), 85%, 60%, 0.12);
+  color: var(--first-color);
+  font-size: var(--tiny-font-size);
+  font-weight: var(--font-semi-bold);
+  padding: .25rem .65rem;
+  border-radius: 1rem;
+  margin-bottom: .6rem;
+}
+
+.achievement__badge i {
+  font-size: .85rem;
+}
+
+.achievement__title {
+  font-size: var(--normal-font-size);
+  font-family: var(--body-font);
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
+  margin-bottom: .25rem;
+  line-height: 1.4;
+}
+
+.achievement__subtitle {
+  display: inline-block;
+  font-size: var(--smaller-font-size);
+  color: var(--first-color);
+  font-weight: var(--font-medium);
+  margin-bottom: .5rem;
+}
+
+.achievement__description {
+  font-size: var(--small-font-size);
+  color: var(--text-color);
+  line-height: 1.55;
+  margin-top: auto;
 }
 
 /*=============== FOCUS AREAS / SERVICES ===============*/
@@ -1450,7 +1600,7 @@ body.dark-theme::-webkit-scrollbar-thumb {
   }
 
   .qualification__sections {
-    max-width: 760px;
+    max-width: 860px;
   }
 
   .projects__container {
